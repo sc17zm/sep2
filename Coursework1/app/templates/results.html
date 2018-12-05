@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/home.css')}}">
+<style>
+ul#menu li {
+    display:inline;
+}
+</style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+<ul class="navbar-nav">
+
+       <li class="nav-item">
+       <a href="search">Search Issues</a>
+       </li>
+
+     </ul>
+   </div>
+ </nav>
+ <br>
+  <table class="table table-striped table-light table-hover">
+   <tr>
+
+     <th>Issue</th>
+     <th>Description of Solution</th>
+
+  </tr>
+  {%for results in theResults%}
+  <tr>
+     <td>{{results.issue}}</td>
+     <td>{{results.solution}}</td>
+
+  </tr>
+  {%endfor%}
+
+  <form method="get" action="/alldoctors">
+    <center>
+  <button class="info" type="submit">Click for doctor info</button>
+  </center>
+  </form>
+</body>
+</html>

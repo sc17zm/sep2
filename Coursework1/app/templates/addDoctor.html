@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  	<link rel="stylesheet" href="{{ url_for('static',filename='styles/home.css')}}">
+  <style>
+  ul#menu li {
+      display:inline;
+  }
+  </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+  <ul class="navbar-nav">
+
+         <li class="nav-item">
+     		 <a href="addissue">Add Issue</a>
+         </li>
+         <li class="nav-item">
+         <a href="allissues">All Issues</a>
+         </li>
+         <li class="nav-item">
+         <a href="adddoctor">Add Doctor</a>
+         </li>
+         <li class="nav-item">
+         <a href="alldoctors">All Doctors</a>
+         </li>
+
+       </ul>
+     </div>
+   </nav>
+   <br>
+
+<h1>Add Doctor</h1>
+<form  action="" method="post" role="form">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+
+    <label for="name">Name:</label>
+    <center>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+    </center>
+      <br>
+    <label for="surname">Surname:</label>
+    <center>
+    <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter Surname">
+    </center>
+<br>
+<label for="telephone">Telephone:</label>
+<center>
+<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Enter telephone number">
+</center>
+</div>
+  <br>
+  <center>
+    <button type="submit" class="btn btn-success">Add Doctor</button>
+  </center>
+</form>
+<br>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+
+{% for message in messages %}
+    {% if "Error" not in message[1]: %}
+        <div class="alert alert-info">
+        <strong>Success! </strong> {{ message[1] }}
+        </div>
+    {% endif %}
+
+    {% if "Error" in message[1]: %}
+        <div class="alert alert-warning">
+        {{ message[1] }}
+        </div>
+    {% endif %}
+{% endfor %}
+    {% endif %}
+{% endwith %}
+
+  </body>
+</html>
